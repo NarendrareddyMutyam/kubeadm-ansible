@@ -1,5 +1,18 @@
 # Kubeadm Ansible Playbook
 
+
+
+fatal: [172.31.39.80]: FAILED! => {"changed": true, "cmd": "command -v helm >/dev/null 2>&1", "delta": "0:00:00.003994", "end": "2020-07-01 05:58:35.287909", "msg": "non-zero return code", "rc": 127, "start": "2020-07-01 05:58:35.283915", "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+
+ fatal: [172.31.39.80]: FAILED! => {"changed": true, "cmd": "kubectl apply -f /tmp/kubeadm-ansible-files/rbac-config.yml", "delta": "0:00:00.058159", "end": "2020-07-01 05:58:39.301333", "msg": "non-zero return code", "rc": 1, "start": "2020-07-01 05:58:39.243174", "stderr": "The connection to the server localhost:8080 was refused - did you specify the right host or port?", "stderr_lines": ["The connection to the server localhost:8080 was refused - did you specify the right host or port?"], "stdout": "", "stdout_lines": []}
+
+
+Run these commands solved this issue:
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config  
+
+
 Build a Kubernetes cluster using Ansible with kubeadm. The goal is easily install a Kubernetes cluster on machines running:
 
   - Ubuntu 16.04
