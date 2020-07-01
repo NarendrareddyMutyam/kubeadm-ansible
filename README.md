@@ -10,7 +10,9 @@ fatal: [172.31.39.80]: FAILED! => {"changed": true, "cmd": "command -v helm >/de
 Run these commands solved this issue:
 
 mkdir -p $HOME/.kube
+
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+
 sudo chown $(id -u):$(id -g) $HOME/.kube/config  
 
 
